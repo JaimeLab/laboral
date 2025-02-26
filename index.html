@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculos de Economía Laboral</title>
+</head>
+<body>
+    <h1>Cálculos de Economía Laboral</h1>
+
+    <h2>Teoría</h2>
+    <p><strong>Elasticidad de la Producción</strong>: Esta fórmula mide cómo cambia la producción (output) ante un cambio en la cantidad de trabajo (input). Si la elasticidad es alta, implica que el trabajo es más productivo en términos de la producción.</p>
+    <p><strong>Productividad Marginal del Trabajo (PML)</strong>: Mide el cambio en la producción que genera una unidad adicional de trabajo, utilizando la función de producción Cobb-Douglas.</p>
+    <p><strong>Impacto del Salario Mínimo en el Empleo</strong>: Mide cómo un salario mínimo influye en la cantidad de trabajo demandado. Si el salario mínimo es muy alto, puede reducir la demanda de trabajo.</p>
+    <p><strong>Tasa de Desempleo</strong>: Proporción de personas desempleadas dentro de la población activa. Es un indicador importante del estado del mercado laboral.</p>
+    <p><strong>Oferta de Trabajo</strong>: Se refiere a la cantidad de trabajo que los individuos están dispuestos a ofrecer a diferentes niveles de salario.</p>
+    <p><strong>Tasa de Sustitución Marginal</strong>: Es la cantidad de trabajo que un empleador está dispuesto a contratar adicionalmente por cada aumento en el salario.</p>
+    <p><strong>Costos Laborales</strong>: Calcula el costo promedio de los trabajadores, incluyendo su salario, dividido entre el número de empleados.</p>
+    <p><strong>Eficiencia Marginal del Trabajo</strong>: Mide cuánto ingreso adicional genera cada unidad adicional de trabajo en la producción de una empresa.</p>
+
+    <h2>Fórmulas</h2>
+
+    <h3>1. Elasticidad de la Producción</h3>
+    <p>Elasticidad de la Producción (α) = <i>(Cambio en la Producción) / (Cambio en el Trabajo)</i></p>
+    <input type="number" id="cambioProduccion" placeholder="Ejemplo: 20">
+    <input type="number" id="cambioTrabajo" placeholder="Ejemplo: 10">
+    <button onclick="calcularElasticidad()">Calcular Elasticidad</button>
+    <div id="resultElasticidad"></div>
+
+    <h3>2. Productividad Marginal del Trabajo (PML)</h3>
+    <p>PML = <i>A * L^(α-1) * K^(1-α)</i></p>
+    <input type="number" id="A" placeholder="Ejemplo: 1">
+    <input type="number" id="L" placeholder="Ejemplo: 100">
+    <input type="number" id="alpha" placeholder="Ejemplo: 0.3">
+    <input type="number" id="K" placeholder="Ejemplo: 50">
+    <button onclick="calcularPML()">Calcular PML</button>
+    <div id="resultPML"></div>
+
+    <h3>3. Impacto del Salario Mínimo</h3>
+    <p>Impacto = <i>Demanda de Trabajo (W) - Demanda en el Salario mínimo</i></p>
+    <input type="number" id="Wmin" placeholder="Ejemplo: 10">
+    <input type="number" id="Wstar" placeholder="Ejemplo: 15">
+    <input type="number" id="demandaBase" placeholder="Ejemplo: 1000">
+    <input type="number" id="demandaPendiente" placeholder="Ejemplo: 50">
+    <button onclick="calcularImpacto()">Calcular Impacto</button>
+    <div id="resultImpacto"></div>
+
+    <h3>4. Tasa de Desempleo</h3>
+    <p>Tasa de Desempleo = <i>(Número de Desempleados) / (Población Activa)</i></p>
+    <input type="number" id="poblacionActiva" placeholder="Ejemplo: 5000">
+    <input type="number" id="desempleo" placeholder="Ejemplo: 200">
+    <button onclick="calcularTasaDesempleo()">Calcular Tasa de Desempleo</button>
+    <div id="resultDesempleo"></div>
+
+    <h3>5. Oferta de Trabajo</h3>
+    <p>Oferta de Trabajo = <i>Trabajo ofrecido a un salario específico</i></p>
+    <input type="number" id="salarioOfrecido" placeholder="Ejemplo: 12">
+    <input type="number" id="trabajoOfrecido" placeholder="Ejemplo: 250">
+    <button onclick="calcularOfertaTrabajo()">Calcular Oferta de Trabajo</button>
+    <div id="resultOfertaTrabajo"></div>
+
+    <h3>6. Tasa de Sustitución Marginal</h3>
+    <p>Tasa de Sustitución = <i>(Cambio en el Trabajo) / (Cambio en el Sueldo)</i></p>
+    <input type="number" id="cambioTrabajo2" placeholder="Ejemplo: 50">
+    <input type="number" id="cambioSueldo" placeholder="Ejemplo: 10">
+    <button onclick="calcularTasaSustitucion()">Calcular Tasa de Sustitución Marginal</button>
+    <div id="resultTasaSustitucion"></div>
+
+    <h3>7. Costo Laboral Promedio</h3>
+    <p>Costo Laboral Promedio = <i>(Salarios Totales) / (Número de Empleados)</i></p>
+    <input type="number" id="salariosTotales" placeholder="Ejemplo: 50000">
+    <input type="number" id="numeroEmpleados" placeholder="Ejemplo: 100">
+    <button onclick="calcularCostosLaborales()">Calcular Costos Laborales</button>
+    <div id="resultCostosLaborales"></div>
+
+    <h3>8. Eficiencia Marginal del Trabajo</h3>
+    <p>Eficiencia Marginal = <i>(Ingresos Adicionales) / (Trabajo Adicional)</i></p>
+    <input type="number" id="ingresosAdicionales" placeholder="Ejemplo: 1000">
+    <input type="number" id="trabajoAdicional" placeholder="Ejemplo: 10">
+    <button onclick="calcularEficienciaMarginal()">Calcular Eficiencia Marginal</button>
+    <div id="resultEficienciaMarginal"></div>
+
+    <h3>9. Ley de la Demanda de Trabajo</h3>
+    <p>Demanda de Trabajo = <i>(Cantidad de trabajo demandado) = A - B * W</i></p>
+    <input type="number" id="A_demand" placeholder="Ejemplo: 1000">
+    <input type="number" id="B_demand" placeholder="Ejemplo: 50">
+    <input type="number" id="W_demand" placeholder="Ejemplo: 20">
+    <button onclick="calcularDemandaTrabajo()">Calcular Demanda de Trabajo</button>
+    <div id="resultDemandaTrabajo"></div>
+
+    <h3>10. Productividad Total de los Factores</h3>
+    <p>Productividad Total = <i>Y = A * K^α * L^(1-α)</i></p>
+    <input type="number" id="A_prod" placeholder="Ejemplo: 1">
+    <input type="number" id="K_prod" placeholder="Ejemplo: 50">
+    <input type="number" id="L_prod" placeholder="Ejemplo: 100">
+    <input type="number" id="alpha_prod" placeholder="Ejemplo: 0.3">
+    <button onclick="calcularProductividadTotal()">Calcular Productividad Total</button>
+    <div id="resultProductividadTotal"></div>
+
+    <h3>11. Costo Total de Trabajo</h3>
+    <p>Costo Total de Trabajo = <i>(Salarios por trabajador) * (Número de trabajadores)</i></p>
+    <input type="number" id="salarioTrabajo" placeholder="Ejemplo: 2000">
+    <input type="number" id="numTrabajadores" placeholder="Ejemplo: 50">
+    <button onclick="calcularCostoTotalTrabajo()">Calcular Costo Total de Trabajo</button>
+    <div id="resultCostoTotalTrabajo"></div>
+
+    <h3>12. Curva de Oferta de Trabajo</h3>
+    <p>Oferta de trabajo = <i>Oferta = c + (P / W)</i></p>
+    <input type="number" id="c_oferta" placeholder="Ejemplo: 10">
+    <input type="number" id="P_oferta" placeholder="Ejemplo: 100">
+    <input type="number" id="W_oferta" placeholder="Ejemplo: 20">
+    <button onclick="calcularCurvaOfertaTrabajo()">Calcular Curva de Oferta de Trabajo</button>
+    <div id="resultCurvaOfertaTrabajo"></div>
+
+    <h3>13. Índice de Gini</h3>
+    <p>Índice de Gini = <i>(Área entre la curva de Lorenz y la línea de igualdad) / (Área total)</i></p>
+    <input type="number" id="lorenz_area" placeholder="Área Lorenz">
+    <input type="number" id="total_area" placeholder="Área Total">
+    <button onclick="calcularGini()">Calcular Índice de Gini</button>
+    <div id="resultGini"></div>
+
+    <script>
+        // Funciones para calcular cada fórmula
+
+        function calcularElasticidad() {
+            const cambioProduccion = parseFloat(document.getElementById('cambioProduccion').value);
+            const cambioTrabajo = parseFloat(document.getElementById('cambioTrabajo').value);
+            const alpha = cambioProduccion / cambioTrabajo;
+            document.getElementById('resultElasticidad').innerHTML = `Elasticidad de la Producción (α) = ${alpha.toFixed(2)}`;
+        }
+
+        function calcularPML() {
+            const A = parseFloat(document.getElementById('A').value);
+            const L = parseFloat(document.getElementById('L').value);
+            const alpha = parseFloat(document.getElementById('alpha').value);
+            const K = parseFloat(document.getElementById('K').value);
+            const pml = A * Math.pow(L, alpha - 1) * Math.pow(K, 1 - alpha);
+            document.getElementById('resultPML').innerHTML = `Productividad Marginal del Trabajo (PML) = ${pml.toFixed(2)}`;
+        }
+
+        function calcularImpacto() {
+            const Wmin = parseFloat(document.getElementById('Wmin').value);
+            const Wstar = parseFloat(document.getElementById('Wstar').value);
+            const demandaBase = parseFloat(document.getElementById('demandaBase').value);
+            const demandaPendiente = parseFloat(document.getElementById('demandaPendiente').value);
+            const demandaTrabajo = (W) => demandaBase - demandaPendiente * W;
+            let impacto = 0;
+            for (let W = Wmin; W <= Wstar; W += 0.01) {
+                impacto += demandaTrabajo(W) * 0.01; 
+            }
+            document.getElementById('resultImpacto').innerHTML = `Impacto del salario mínimo en el empleo: ${impacto.toFixed(2)}`;
+        }
+
+        function calcularTasaDesempleo() {
+            const poblacionActiva = parseFloat(document.getElementById('poblacionActiva').value);
+            const desempleo = parseFloat(document.getElementById('desempleo').value);
+            const tasaDesempleo = (desempleo / poblacionActiva) * 100;
+            document.getElementById('resultDesempleo').innerHTML = `Tasa de Desempleo = ${tasaDesempleo.toFixed(2)}%`;
+        }
+
+        function calcularOfertaTrabajo() {
+            const salarioOfrecido = parseFloat(document.getElementById('salarioOfrecido').value);
+            const trabajoOfrecido = parseFloat(document.getElementById('trabajoOfrecido').value);
+            document.getElementById('resultOfertaTrabajo').innerHTML = `Oferta de Trabajo = ${trabajoOfrecido} unidades a un salario de ${salarioOfrecido}`;
+        }
+
+        function calcularTasaSustitucion() {
+            const cambioTrabajo = parseFloat(document.getElementById('cambioTrabajo2').value);
+            const cambioSueldo = parseFloat(document.getElementById('cambioSueldo').value);
+            const tasaSustitucion = cambioTrabajo / cambioSueldo;
+            document.getElementById('resultTasaSustitucion').innerHTML = `Tasa de Sustitución Marginal = ${tasaSustitucion.toFixed(2)}`;
+        }
+
+        function calcularCostosLaborales() {
+            const salariosTotales = parseFloat(document.getElementById('salariosTotales').value);
+            const numeroEmpleados = parseFloat(document.getElementById('numeroEmpleados').value);
+            const costoLaboralPromedio = salariosTotales / numeroEmpleados;
+            document.getElementById('resultCostosLaborales').innerHTML = `Costo Laboral Promedio = ${costoLaboralPromedio.toFixed(2)}`;
+        }
+
+        function calcularEficienciaMarginal() {
+            const ingresosAdicionales = parseFloat(document.getElementById('ingresosAdicionales').value);
+            const trabajoAdicional = parseFloat(document.getElementById('trabajoAdicional').value);
+            const eficienciaMarginal = ingresosAdicionales / trabajoAdicional;
+            document.getElementById('resultEficienciaMarginal').innerHTML = `Eficiencia Marginal del Trabajo = ${eficienciaMarginal.toFixed(2)}`;
+        }
+
+        function calcularDemandaTrabajo() {
+            const A_demand = parseFloat(document.getElementById('A_demand').value);
+            const B_demand = parseFloat(document.getElementById('B_demand').value);
+            const W_demand = parseFloat(document.getElementById('W_demand').value);
+            const demandaTrabajo = A_demand - B_demand * W_demand;
+            document.getElementById('resultDemandaTrabajo').innerHTML = `Demanda de Trabajo = ${demandaTrabajo.toFixed(2)}`;
+        }
+
+        function calcularProductividadTotal() {
+            const A_prod = parseFloat(document.getElementById('A_prod').value);
+            const K_prod = parseFloat(document.getElementById('K_prod').value);
+            const L_prod = parseFloat(document.getElementById('L_prod').value);
+            const alpha_prod = parseFloat(document.getElementById('alpha_prod').value);
+            const productividadTotal = A_prod * Math.pow(K_prod, alpha_prod) * Math.pow(L_prod, 1 - alpha_prod);
+            document.getElementById('resultProductividadTotal').innerHTML = `Productividad Total de los Factores = ${productividadTotal.toFixed(2)}`;
+        }
+
+        function calcularCostoTotalTrabajo() {
+            const salarioTrabajo = parseFloat(document.getElementById('salarioTrabajo').value);
+            const numTrabajadores = parseFloat(document.getElementById('numTrabajadores').value);
+            const costoTotalTrabajo = salarioTrabajo * numTrabajadores;
+            document.getElementById('resultCostoTotalTrabajo').innerHTML = `Costo Total de Trabajo = ${costoTotalTrabajo.toFixed(2)}`;
+        }
+
+        function calcularCurvaOfertaTrabajo() {
+            const c_oferta = parseFloat(document.getElementById('c_oferta').value);
+            const P_oferta = parseFloat(document.getElementById('P_oferta').value);
+            const W_oferta = parseFloat(document.getElementById('W_oferta').value);
+            const curvaOfertaTrabajo = c_oferta + (P_oferta / W_oferta);
+            document.getElementById('resultCurvaOfertaTrabajo').innerHTML = `Curva de Oferta de Trabajo = ${curvaOfertaTrabajo.toFixed(2)}`;
+        }
+
+        function calcularGini() {
+            const lorenz_area = parseFloat(document.getElementById('lorenz_area').value);
+            const total_area = parseFloat(document.getElementById('total_area').value);
+            const giniIndex = (lorenz_area / total_area) * 100;
+            document.getElementById('resultGini').innerHTML = `Índice de Gini = ${giniIndex.toFixed(2)}%`;
+        }
+    </script>
+</body>
+</html>
